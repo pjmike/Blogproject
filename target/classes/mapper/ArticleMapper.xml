@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.pjmike.Blog.dao.ArticleDao">
+    <!--<resultMap id="articleResult" type="article">
+        <id column="article_id" property="articleId"/>
+        <result column="article_title" property="articleTitle"/>
+        <result column="article_content" property="articleContent"/>
+        <result column="article_uid" property="articleUid"/>
+        <result column="article_cid" property="articleCid"/>
+        <result column="create_time" property="createTime"/>
+    </resultMap>-->
+    <!--<select id="findAllArticleByPage" parameterType="map" resultMap="articleResult">
+        SELECT * FROM article
+    </select>-->
+    <select id="findArticleById" parameterType="java.lang.Long" resultType="article">
+        SELECT * FROM article WHERE article_id = #{id}
+    </select>
+    <insert id="createArticle" parameterType="article" useGeneratedKeys="true" keyProperty="article_id">
+        INSERT INTO article(<include refid="key"/>) VALUES (<include refid="value"/>)
+    </insert>
+    <update id="updateArticle">
+        UPDATE article SET
+        <if test="article.articleTitle != null">
+            article_title = #{article.articleTitle}
+        </if>
+        <if test="article.articleContent != null">
+            article_content = #{article.articleContent}
+        </if>
+        <if test="article.articleCid != null">
+            article_cid = #{article.articleCid}
+        </if>
+        WHERE article_id =#{id}
+    </update>
+    <delete id="deleteArticle" parameterType="long">
+        DELETE FROM article WHERE article_id = #{id}
+    </delete>
+    <sql id="key">
+        <trim suffixOverrides=",">
+            <if test="articleTitle != null">article_title,</if>
+            <if test="articleContent != null">article_content,</if>
+            <if test="articleUid != null">article_uid,</if>
+            <if test="articleCid != null">article_cid,</if>
+        </trim>
+    </sql>
+    <sql id="value">
+        <trim suffixOverrides=",">
+            <if test="articleTitle != null">#{articleTitle},</if>
+            <if test="articleContent != null">#{articleContent},</if>
+            <if test="articleUid != null">#{articleUid},</if>
+            <if test="articleCid != null">#{articleCid},</if>
+        </trim>
+    </sql>
+</mapper>
