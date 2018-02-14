@@ -12,6 +12,8 @@
 2.  [Spring Boot中使用Swagger2构建强大的RESTful API文档](http://blog.didispace.com/springbootswagger2/)
 ![image](http://osvtz719h.bkt.clouddn.com/swagger.PNG)
 
+本项目swagger-ui: http://39.106.63.214:8080/blogproject/swagger-ui.html
+
 ### Restful
 1.  [RESTful API 设计指南
 ](http://www.ruanyifeng.com/blog/2014/05/restful_api)
