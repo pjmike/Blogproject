@@ -23,6 +23,7 @@ import java.util.Arrays;
  **/
 @Aspect
 @Component
+@EnableAspectJAutoProxy
 public class HttpApectJ {
     private final static Logger logger = LoggerFactory.getLogger(HttpApectJ.class);
 

@@ -15,14 +15,14 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.Map;
 
 /**
- * 对请求进行验证拦截
+ * 使用拦截器对请求进行验证拦截
  *
  * @author pjmike
  * @create 2018-02-07 20:23
  **/
-@Component
+//@Component
 public class MyInterceptor extends HandlerInterceptorAdapter {
-    @Autowired
+//    @Autowired
     private UserService userService;
 
     @Override

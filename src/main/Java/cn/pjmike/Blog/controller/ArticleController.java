@@ -3,6 +3,8 @@ package cn.pjmike.Blog.controller;
 import cn.pjmike.Blog.domain.Article;
 import cn.pjmike.Blog.service.ArticleService;
 import cn.pjmike.Blog.util.ResponseResult;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.web.bind.annotation.*;
@@ -14,6 +16,7 @@ import java.util.List;
  * @create 2018-02-05 16:38
  **/
 @RestController
+@Api(value = "articleController",description = "文章相关API")
 public class ArticleController {
     @Autowired
     private ArticleService articleService;
@@ -26,6 +29,7 @@ public class ArticleController {
      * @return
      */
     @GetMapping(value = "/articles/{currPage}/{pageSize}")
+    @ApiOperation(value = "文章列表",notes = "分页返回文章列表",response = ResponseResult.class)
     public ResponseResult<List<Article>> getArticleByPage(@PathVariable("currPage") int currPage, @PathVariable("pageSize") int pageSize) {
         ResponseResult<List<Article>> result = new ResponseResult<List<Article>>();
         //分页查询
@@ -48,6 +52,7 @@ public class ArticleController {
      * @return
      */
     @GetMapping(value = "/articles/{id}")
+    @ApiOperation(value = "获取文章",notes = "某一文章",response = ResponseResult.class)
     public ResponseResult<Article> getArticleById(@PathVariable("id") long id) {
         ResponseResult<Article> result = new ResponseResult<Article>();
 
@@ -71,6 +76,7 @@ public class ArticleController {
      * @return
      */
     @PostMapping(value = "/articles")
+    @ApiOperation(value = "发表文章",notes = "用户发表文章",response = ResponseResult.class)
     public ResponseResult<Article> postArticle(@RequestBody Article article) {
         ResponseResult<Article> result = new ResponseResult<Article>();
         result.setStatus(0);
@@ -87,6 +93,7 @@ public class ArticleController {
      * @return
      */
     @PutMapping(value = "/articles/{id}")
+    @ApiOperation(value = "更新文章",notes = "更新文章",response = ResponseResult.class)
     public ResponseResult<Article> putArticle(@PathVariable("id") long id, @RequestBody Article article) {
         ResponseResult<Article> result = new ResponseResult<Article>();
         //放入更新后的内容返回
@@ -103,6 +110,7 @@ public class ArticleController {
      * @return
      */
     @DeleteMapping(value = "/articles/{id}")
+    @ApiOperation(value = "删除文章",notes = "删除文章",response = ResponseResult.class)
     public ResponseResult<Article> deleteArtcle(@PathVariable("id") long id) {
         ResponseResult<Article> result = new ResponseResult<Article>();
         //删除后，返回null数据

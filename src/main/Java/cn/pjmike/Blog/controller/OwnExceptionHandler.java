@@ -3,7 +3,6 @@ package cn.pjmike.Blog.controller;
 import cn.pjmike.Blog.exception.NullException;
 import cn.pjmike.Blog.exception.ResourceNotFoundException;
 import cn.pjmike.Blog.util.ResponseResult;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.multipart.MultipartException;
@@ -25,7 +24,7 @@ public class OwnExceptionHandler {
     }
 
     @ExceptionHandler(ResourceNotFoundException.class)
-    public ResponseResult<Object> ResourceNotFoundExceptionHandler(NullException n) {
+    public ResponseResult<Object> ResourceNotFoundExceptionHandler(ResourceNotFoundException n) {
         ResponseResult<Object> responseResult = new ResponseResult<Object>();
         responseResult.setStatus(1);
         responseResult.setMsg(n.getMessage());

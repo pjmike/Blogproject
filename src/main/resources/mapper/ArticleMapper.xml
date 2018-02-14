@@ -11,7 +11,7 @@
         SELECT * FROM article WHERE article_id = #{id}
     </select>
     <!--将文章和评论一块查询返回-->
-    <select id="findArticleWithComments" parameterType="java.lang.Long"
+    <!--<select id="findArticleWithComments" parameterType="java.lang.Long"-->
     <insert id="createArticle" parameterType="article" useGeneratedKeys="true" keyProperty="article_id">
         INSERT INTO article(<include refid="key"/>) VALUES (<include refid="value"/>)
     </insert>
@@ -55,14 +55,14 @@
         <result column="article_cid" property="articleCid"/>
         <result column="create_time" property="createTime"/>
     </resultMap>
-    <resultMap id="articleWithComments" type="articleDto">
+   <!-- <resultMap id="articleWithComments" type="articleDto">
         <id column="article_id" property="articleId"/>
         <result column="article_title" property="articleTitle"/>
         <result column="article_content" property="articleContent"/>
         <result column="article_uid" property="articleUid"/>
         <result column="article_cid" property="articleCid"/>
         <result column="create_time" property="createTime"/>
-        <!--级联-->
+        &lt;!&ndash;级联&ndash;&gt;
         <collection property="comments" ofType="comment">
             <id column="comment_id" property="commentId"/>
             <result column="from_uid" property="fromUid"/>
@@ -75,5 +75,5 @@
             <result column="article_id" property="articleId"/>
             <result column="create_time" property="createTime"/>
         </collection>
-    </resultMap>
+    </resultMap>-->
 </mapper>

@@ -3,7 +3,10 @@ package cn.pjmike.Blog.controller;
 import cn.pjmike.Blog.domain.User;
 import cn.pjmike.Blog.service.UserService;
 import cn.pjmike.Blog.util.ResponseResult;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -17,11 +20,18 @@ import java.util.UUID;
  * @create 2018-02-07 15:26
  **/
 @RestController
+@Api(value = "UserController",description = "用户相关API")
 public class UserController {
     @Autowired
     private UserService userService;
 
+    /**
+     * 用户信息
+     * @param id
+     * @return
+     */
     @GetMapping(value = "/users/{id}")
+    @ApiOperation(value = "用户主页",notes = "用户主页信息",response = ResponseResult.class)
     public ResponseResult<User> getUserInformation(@PathVariable("id") Long id) {
         ResponseResult<User> result = new ResponseResult<User>();
         User user = userService.findUserById(id);
@@ -48,6 +58,7 @@ public class UserController {
      * @throws IOException
      */
     @PostMapping(value = "/users/{id}/icon", consumes = "multipart/form-data")
+    @ApiOperation(value = "上传用户头像",notes = "上传用户头像",response = ResponseResult.class,httpMethod = "POST",produces = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseResult<Object> uploadIcon(@PathVariable("id") Long id, @RequestParam("picture") MultipartFile file, HttpServletRequest request) throws IOException {
         ResponseResult<Object> result = new ResponseResult<Object>();
         //获取项目的webroot

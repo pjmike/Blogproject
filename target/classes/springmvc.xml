@@ -10,11 +10,25 @@
     <!--注解驱动-->
     <mvc:annotation-driven/>
     <!--当请求没有controller处理时进行默认处理:即default servlet处理了-->
+    <!--所有swagger目录的访问，直接访问location指定的目录-->
     <mvc:default-servlet-handler/>
+    <!--<mvc:resources mapping="/swagger/**" location="/WEB-INF/swagger/"/>-->
     <!--视图解析器-->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
         <property name="prefix" value="/WEB-INF/jsp/"/>
         <property name="suffix" value=".jsp"/>
     </bean>
+    <!--上传图片,StandardServletMultipartResovler方式,它使用Servlet所提供的支持，并不需要依赖任何其他的项目。兼容Servlet3.0的StandardServletMultipartResovler没有构造器参数，也有要设置的属性。-->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.support.StandardServletMultipartResolver">
+    </bean>
+    
+    <!--拦截器相关配置-->
+ <!--   <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/users/**"/>
+            <mvc:mapping path="/articles"/>
+            <bean class="cn.pjmike.Blog.interceptor.MyInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>-->
 </beans>

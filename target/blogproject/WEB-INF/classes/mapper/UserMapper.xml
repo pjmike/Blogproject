@@ -19,4 +19,8 @@
     <insert id="addUser" parameterType="user">
         INSERT INTO user(username,password) VALUES (#{username},#{password});
     </insert>
+    <!--上传用户头像-->
+    <update id="updateUserIcon">
+        UPDATE user SET icon = #{IconName} WHERE id = #{id}
+    </update>
 </mapper>

@@ -10,8 +10,11 @@ import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.interfaces.DecodedJWT;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -23,6 +26,7 @@ import java.io.UnsupportedEncodingException;
  * @create 2018-02-04 17:20
  **/
 @RestController
+@Api(value = "LoginController", description = "登录注册API")
 public class LoginController {
     @Autowired
     private UserService userService;
@@ -33,8 +37,12 @@ public class LoginController {
      * @param user
      * @return
      */
+    @ApiOperation(value = "注册", notes = "注册用户",
+            httpMethod = "POST", response = ResponseResult.class, produces = MediaType.APPLICATION_JSON_UTF8_VALUE
+    )
     @PostMapping(value = "/signup")
     public ResponseResult<Object> signup(@RequestBody User user) {
+
         ResponseResult<Object> responseResult = new ResponseResult<Object>();
         if (user.getUsername() == null || user.getPassword() == null) {
             throw new NullException("输入的用户名或者密码为空");
@@ -55,6 +63,9 @@ public class LoginController {
      * @param user
      * @return
      */
+    @ApiOperation(value = "登录", notes = "登录用户",
+            httpMethod = "POST", response = ResponseResult.class, produces = MediaType.APPLICATION_JSON_UTF8_VALUE
+    )
     @PostMapping(value = "/signin")
     public ResponseResult<Object> signin(@RequestBody User user, HttpServletResponse response) throws UnsupportedEncodingException {
         ResponseResult<Object> result = new ResponseResult<Object>();

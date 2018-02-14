@@ -9,5 +9,5 @@
         <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
     <!--开启aop-->
-    <aop:scoped-proxy proxy-target-class="true"/>
+    <!--<aop:scoped-proxy proxy-target-class="true"/>-->
 </beans>

@@ -2,15 +2,6 @@
 <configuration  scan="true" scanPeriod="60 seconds" debug="false">
     <contextName>logback</contextName>
     <property name="log.path" value="F://Bloglog" />
-    <!--输出到控制台-->
-   <!-- <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
-        &lt;!&ndash; <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
-             <level>ERROR</level>
-         </filter>&ndash;&gt;
-        <encoder>
-            <pattern>%d{HH:mm:ss.SSS} %contextName [%thread] %-5level %logger{36} - %msg%n</pattern>
-        </encoder>
-    </appender>-->
     <!-- 控制台输出 -->
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <!-- encoder默认配置为PartternLayoutEncoder    -->
@@ -36,8 +27,4 @@
 
     <!-- logback为java中的包 -->
     <logger name="cn.pjmike.xuebei.controller"/>
-    <!--logback.LogbackDemo：类的全路径 -->
-   <!-- <logger name="com.dudu.controller.LearnController" level="WARN" additivity="false">
-        <appender-ref ref="console"/>
-    </logger>-->
 </configuration>
