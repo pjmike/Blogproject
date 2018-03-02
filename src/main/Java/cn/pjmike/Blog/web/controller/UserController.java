@@ -86,7 +86,7 @@ public class UserController {
         //将文件写入
         file.transferTo(picfile);
         //将图片的地址写入数据库中
-        User user = userService.upLoadUserIcon(id,newFilename);
+        User user = userService.upLoadUserIcon(id,ImageUrl+newFilename);
         result.setStatus(0);
         result.setMsg("成功上传图片");
         result.setData(ImageUrl+newFilename);
