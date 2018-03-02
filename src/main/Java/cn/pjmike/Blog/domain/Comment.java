@@ -3,7 +3,7 @@ package cn.pjmike.Blog.domain;
 import java.util.Date;
 
 /**
- * 评论类，用单表设计评论功能，所以这里只有一个评论类
+ * 评论类，用单表设计评论功能，冗余评论人用户和头像字段，所以这里只有一个评论类
  *
  * @author pjmike
  * @create 2018-02-06 15:47
@@ -148,6 +148,25 @@ public class Comment {
     }
 
     public void setCreateTime(Date createTime) {
+
         this.createTime = createTime;
+    }
+
+    @Override
+    public String toString() {
+        return "Comment{" +
+                "commentId=" + commentId +
+                ", fromUid=" + fromUid +
+                ", fName='" + fName + '\'' +
+                ", fIcon='" + fIcon + '\'' +
+                ", toUid=" + toUid +
+                ", toName='" + toName + '\'' +
+                ", toIcon='" + toIcon + '\'' +
+                ", content='" + content + '\'' +
+                ", articleId=" + articleId +
+                ", parentId=" + parentId +
+                ", type=" + type +
+                ", createTime=" + createTime +
+                '}';
     }
 }

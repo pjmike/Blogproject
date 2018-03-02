@@ -7,8 +7,12 @@
     <select id="findAllArticleByPage" parameterType="map" resultMap="articleResult">
         SELECT * FROM article
     </select>
-    <select id="findArticleById" parameterType="java.lang.Long" resultMap="articleResult">
-        SELECT * FROM article WHERE article_id = #{id}
+    <select id="findArticleByIdWithComments" parameterType="java.lang.Long" resultMap="articleWithComments">
+        SELECT
+        a.*,c.*
+        FROM article a
+        LEFT JOIN comment c ON c.article_id = a.article_id
+        WHERE a.article_id = #{id}
     </select>
     <!--将文章和评论一块查询返回-->
     <!--<select id="findArticleWithComments" parameterType="java.lang.Long"-->
@@ -55,14 +59,14 @@
         <result column="article_cid" property="articleCid"/>
         <result column="create_time" property="createTime"/>
     </resultMap>
-   <!-- <resultMap id="articleWithComments" type="articleDto">
+    <resultMap id="articleWithComments" type="articleDto">
         <id column="article_id" property="articleId"/>
         <result column="article_title" property="articleTitle"/>
         <result column="article_content" property="articleContent"/>
         <result column="article_uid" property="articleUid"/>
         <result column="article_cid" property="articleCid"/>
         <result column="create_time" property="createTime"/>
-        &lt;!&ndash;级联&ndash;&gt;
+        <!--级联-->
         <collection property="comments" ofType="comment">
             <id column="comment_id" property="commentId"/>
             <result column="from_uid" property="fromUid"/>
@@ -75,5 +79,5 @@
             <result column="article_id" property="articleId"/>
             <result column="create_time" property="createTime"/>
         </collection>
-    </resultMap>-->
+    </resultMap>
 </mapper>

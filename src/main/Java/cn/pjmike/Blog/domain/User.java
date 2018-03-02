@@ -1,5 +1,7 @@
 package cn.pjmike.Blog.domain;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 /**
  * 用户类
  *
@@ -8,7 +10,9 @@ package cn.pjmike.Blog.domain;
  **/
 public class User {
     private Long id;
+    @NotBlank(message = "用户名不能为空")
     private String username;
+    @NotBlank(message = "密码不能为空")
     private String password;
     /**
      * 用户头像

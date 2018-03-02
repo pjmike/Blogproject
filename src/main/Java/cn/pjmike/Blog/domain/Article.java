@@ -1,7 +1,7 @@
 package cn.pjmike.Blog.domain;
 
-import java.sql.Timestamp;
 import java.util.Date;
+import java.util.List;
 
 /**
  * 文章类
@@ -24,7 +24,9 @@ public class Article {
     /**
      * 文章创建时间
      */
-    private Timestamp creatTime;
+    private Date createTime;
+
+
 
     public Long getArticleId() {
         return articleId;
@@ -66,12 +68,12 @@ public class Article {
         this.articleCid = articleCid;
     }
 
-    public Timestamp getCreatTime() {
-        return creatTime;
+    public Date getCreateTime() {
+        return createTime;
     }
 
-    public void setCreatTime(Timestamp creatTime) {
-        this.creatTime = creatTime;
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 
     @Override
@@ -82,7 +84,7 @@ public class Article {
                 ", articleContent='" + articleContent + '\'' +
                 ", articleUid=" + articleUid +
                 ", articleCid=" + articleCid +
-                ", creatTime=" + creatTime +
+                ", createTime=" + createTime +
                 '}';
     }
 }

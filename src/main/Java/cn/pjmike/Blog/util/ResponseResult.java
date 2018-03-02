@@ -28,6 +28,12 @@ public class ResponseResult<T> implements Serializable{
         this.data = data;
     }
 
+    public ResponseResult(int status, String msg, T data) {
+        this.status = status;
+        this.msg = msg;
+        this.data = data;
+    }
+
     public int getStatus() {
         return status;
     }

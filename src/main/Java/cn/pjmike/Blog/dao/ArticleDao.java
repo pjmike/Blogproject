@@ -1,7 +1,7 @@
 package cn.pjmike.Blog.dao;
 
 import cn.pjmike.Blog.domain.Article;
-import cn.pjmike.Blog.dto.ArticleDto;
+import cn.pjmike.Blog.domain.dto.ArticleDto;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -33,7 +33,7 @@ public interface ArticleDao {
      * @param id
      * @return
      */
-    Article findArticleById(Long id);
+    ArticleDto findArticleByIdWithComments(Long id);
 
     /**
      * 通过文章id返回有评论的文章

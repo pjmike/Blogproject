@@ -1,6 +1,7 @@
 package cn.pjmike.Blog.service;
 
 import cn.pjmike.Blog.domain.Article;
+import cn.pjmike.Blog.domain.dto.ArticleDto;
 
 import java.util.List;
 
@@ -31,7 +32,7 @@ public interface ArticleService {
      * @param id
      * @return
      */
-    Article findArticleById(Long id);
+    ArticleDto findArticleByIdWithComments(Long id);
 
     /**
      * 更新文章

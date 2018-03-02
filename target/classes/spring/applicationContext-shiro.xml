@@ -7,7 +7,7 @@
         <property name="realm" ref="myRealm"/>
     </bean>
     <!--自定义过滤器-->
-    <bean id="filter" class="cn.pjmike.Blog.shiro.Filter"/>
+    <bean id="filter" class="cn.pjmike.Blog.web.shiro.Filter"/>
     <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
         <property name="securityManager" ref="securityManager"/>
         <property name="filters">
@@ -17,7 +17,7 @@
         </property>
         <property name="filterChainDefinitions">
             <value>
-                    /users/** = authc
+                    <!--/users/** = authc-->
                     /articles = authc
             </value>
         </property>

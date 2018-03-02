@@ -17,7 +17,7 @@
         </property>
         <property name="filterChainDefinitions">
             <value>
-                    /users/** = authc
+                    <!--/users/** = authc-->
                     /articles = authc
             </value>
         </property>

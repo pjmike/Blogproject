@@ -2,6 +2,7 @@ package cn.pjmike.Blog.service.impl;
 
 import cn.pjmike.Blog.dao.ArticleDao;
 import cn.pjmike.Blog.domain.Article;
+import cn.pjmike.Blog.domain.dto.ArticleDto;
 import cn.pjmike.Blog.service.ArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,18 +29,18 @@ public class ArticleServiceImpl implements ArticleService{
     @Override
     public Article createArticle(Article article) {
         articleDao.createArticle(article);
-        return articleDao.findArticleById(article.getArticleId());
+        return articleDao.findArticleByIdWithComments(article.getArticleId());
     }
 
     @Override
-    public Article findArticleById(Long id) {
-        return articleDao.findArticleById(id);
+    public ArticleDto findArticleByIdWithComments(Long id) {
+        return articleDao.findArticleByIdWithComments(id);
     }
 
     @Override
     public Article updateArticle(long id,Article article) {
         articleDao.updateArticle(id,article);
-        return articleDao.findArticleById(id);
+        return articleDao.findArticleByIdWithComments(id);
 
     }
 
